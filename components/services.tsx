@@ -104,7 +104,7 @@ export function Services() {
             <div className="relative">
               <div className="aspect-video rounded-lg overflow-hidden neon-border">
                 <img
-                  src="/modern-landing-page-design-with-elegant-layout.jpg"
+                  src="/ejemplo_de_quincho.jpg"
                   alt="Landing page example"
                   className="w-full h-full object-cover"
                 />
