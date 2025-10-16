@@ -97,9 +97,17 @@ export function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative"
         >
-          <div className="w-full h-96 bg-card rounded-lg border-2 neon-border-cyan flex items-center justify-center relative overflow-hidden">
+          <div className="w-full h-96 bg-card rounded-lg border-2 neon-border-cyan flex items-center justify-center relative overflow-hidden group">
             <div className="absolute inset-0 opacity-20">
-              <div
+              <motion.div
+                animate={{
+                  backgroundPosition: ["0% 0%", "100% 100%"],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                }}
                 className="absolute inset-0"
                 style={{
                   backgroundImage:
@@ -108,22 +116,164 @@ export function Hero() {
                 }}
               />
             </div>
+
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 rounded-full"
+                style={{
+                  background: i % 2 === 0 ? "var(--neon-cyan)" : "var(--neon-magenta)",
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  opacity: [0.3, 1, 0.3],
+                  scale: [1, 1.5, 1],
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  delay: Math.random() * 2,
+                  ease: "easeInOut",
+                }}
+              />
+            ))}
+
+            <motion.div
+              className="absolute inset-0 rounded-lg pointer-events-none"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+              style={{
+                background:
+                  "conic-gradient(from 0deg, rgba(0,0,0,0) 0%, rgba(14,165,233,0.12) 8%, rgba(0,0,0,0) 20%, rgba(236,72,153,0.10) 32%, rgba(0,0,0,0) 46%)",
+                opacity: 0.9,
+                filter: "blur(10px)",
+                mixBlendMode: "screen",
+              }}
+            />
+
             <div className="text-center space-y-4 relative z-10">
               <motion.div
                 animate={{
-                  boxShadow: [
-                    "0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan), inset 0 0 20px var(--neon-cyan)",
-                    "0 0 30px var(--neon-magenta), 0 0 60px var(--neon-magenta), inset 0 0 30px var(--neon-magenta)",
-                    "0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan), inset 0 0 20px var(--neon-cyan)",
-                  ],
+                  y: [0, -15, 0],
+                  rotate: [0, 2, -2, 0],
                 }}
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-                className="w-32 h-32 bg-primary/20 rounded-full mx-auto flex items-center justify-center border-2 border-primary"
+                transition={{
+                  duration: 6,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "easeInOut",
+                }}
+                className="relative"
               >
-                <span className="text-4xl font-bold text-primary neon-glow-cyan">LF</span>
+                <motion.div
+                  className="absolute -inset-4 rounded-full opacity-50"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                  style={{
+                    background:
+                      "conic-gradient(from 0deg, var(--neon-cyan), var(--neon-magenta), var(--neon-green), var(--neon-cyan))",
+                  }}
+                />
+
+                <motion.div
+                  className="absolute -inset-3 rounded-full"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.5, 0.8, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    background: "radial-gradient(circle, var(--neon-cyan) 0%, transparent 70%)",
+                  }}
+                />
+
+                <motion.div
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: [
+                      "0 0 30px var(--neon-cyan), 0 0 60px var(--neon-cyan), inset 0 0 30px var(--neon-cyan)",
+                      "0 0 30px var(--neon-magenta), 0 0 60px var(--neon-magenta), inset 0 0 30px var(--neon-magenta)",
+                      "0 0 30px var(--neon-green), 0 0 60px var(--neon-green), inset 0 0 30px var(--neon-green)",
+                    ],
+                  }}
+                  animate={{
+                    boxShadow: [
+                      "0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan), inset 0 0 20px var(--neon-cyan)",
+                      "0 0 30px var(--neon-magenta), 0 0 60px var(--neon-magenta), inset 0 0 30px var(--neon-magenta)",
+                      "0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan), inset 0 0 20px var(--neon-cyan)",
+                    ],
+                  }}
+                  transition={{
+                    boxShadow: { duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
+                    scale: { duration: 0.3 },
+                  }}
+                  className="w-32 h-32 bg-primary/20 rounded-full mx-auto flex items-center justify-center border-2 border-primary relative overflow-hidden cursor-pointer"
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-transparent"
+                    animate={{ y: ["-100%", "200%"] }}
+                    transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                  />
+
+                  <span className="text-4xl font-bold text-primary neon-glow-cyan relative z-10">LF</span>
+                </motion.div>
               </motion.div>
-              <p className="text-muted-foreground"></p>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="text-muted-foreground relative"
+              >
+                <motion.span
+                  animate={{
+                    textShadow: [
+                      "0 0 10px var(--neon-cyan)",
+                      "0 0 20px var(--neon-magenta)",
+                      "0 0 10px var(--neon-cyan)",
+                    ],
+                  }}
+                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                >
+
+                </motion.span>
+              </motion.p>
             </div>
+
+            {[
+              { top: "0", left: "0", rotate: 0 },
+              { top: "0", right: "0", rotate: 90 },
+              { bottom: "0", right: "0", rotate: 180 },
+              { bottom: "0", left: "0", rotate: 270 },
+            ].map((pos, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-8 h-8"
+                style={{ ...pos }}
+                animate={{
+                  opacity: [0.3, 1, 0.3],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  delay: i * 0.5,
+                }}
+              >
+                <div
+                  className="w-full h-full border-t-4 border-l-2 rounded-tl-lg"
+                  style={{
+                    borderColor: i % 2 === 0 ? "var(--neon-cyan)" : "var(--neon-magenta)",
+                    transform: `rotate(${pos.rotate}deg)`,
+                  }}
+                />
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
