@@ -3,8 +3,11 @@
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Mail, MapPin } from "lucide-react"
 import { motion } from "framer-motion"
+import { useTranslations } from "next-intl"
 
 export function Hero() {
+  const t = useTranslations("Hero")
+
   return (
     <section className="min-h-screen flex items-center justify-center px-6 pt-20">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
@@ -15,13 +18,13 @@ export function Hero() {
           className="space-y-8"
         >
           <div className="space-y-4">
-            <motion.h1
+                <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl lg:text-6xl font-bold text-foreground text-balance neon-glow-cyan"
             >
-              Luciano Rafael Flores
+              {t("title")}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -29,7 +32,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-xl text-primary font-medium neon-glow-cyan"
             >
-              Full Stack Developer
+              {t("subtitle")}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -38,7 +41,7 @@ export function Hero() {
               className="flex items-center gap-2 text-muted-foreground"
             >
               <MapPin className="w-4 h-4" />
-              <span>Salta, Argentina</span>
+              <span>{t("location")}</span>
             </motion.div>
           </div>
 
@@ -48,9 +51,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-lg text-muted-foreground leading-relaxed text-pretty"
           >
-            I build scalable web solutions using modern technologies like React.js, Node.js, and Python. Recent Computer
-            Software Development graduate with hands-on experience in hackathons, collaborative projects, and freelance
-            technical support.
+            {t("paragraph")}
           </motion.p>
 
           <motion.div
@@ -60,7 +61,7 @@ export function Hero() {
             className="flex flex-wrap gap-4"
           >
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 neon-border-cyan">
-              <a href="#contact">Get In Touch</a>
+              <a href="#contact">{t("getInTouch")}</a>
             </Button>
             <Button variant="outline" asChild className="neon-border-magenta bg-transparent">
               <a href="#projects">View Projects</a>
@@ -240,7 +241,7 @@ export function Hero() {
                   }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                 >
-
+                  {t("professionalPhoto")}
                 </motion.span>
               </motion.p>
             </div>
