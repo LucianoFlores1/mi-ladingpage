@@ -1,0 +1,30 @@
+{
+  "Hero": {
+    "title": "Luciano Rafael Flores",
+    "subtitle": "Full Stack Developer",
+    "location": "Salta, Argentina",
+    "paragraph": "I build scalable web solutions using modern technologies like React.js, Node.js, and Python. Recent Computer Software Development graduate with hands-on experience in hackathons, collaborative projects, and freelance technical support.",
+    "getInTouch": "Get In Touch",
+    "viewProjects": "View Projects",
+    "professionalPhoto": "Professional Photo"
+  },
+  "Services": {
+    "heading": "Landing Page Creation Service",
+    "description": "Transform your ideas into stunning, high-converting landing pages that captivate your audience",
+    "exampleTitle": "Example Project: Quincho El Milagro",
+    "exampleDescription": "A modern landing page showcasing a venue rental service with elegant design, smooth animations, and responsive layout. Built with Next.js and featuring image galleries, contact forms, and optimized performance.",
+    "viewOnGithub": "View on GitHub",
+    "getYourLandingPage": "Get Your Landing Page",
+    "whatYouGetTitle": "What You Get",
+    "whatYouGet": {
+      "responsive": "Responsive Design",
+      "fast": "Loading Speed",
+      "seo": "Optimized"
+    }
+  },
+  "Common": {
+    "percent100": "100%",
+    "fast": "Fast",
+    "seo": "SEO"
+  }
+}

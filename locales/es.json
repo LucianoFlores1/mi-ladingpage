@@ -1,0 +1,30 @@
+{
+  "Hero": {
+    "title": "Luciano Rafael Flores",
+    "subtitle": "Desarrollador Full Stack",
+    "location": "Salta, Argentina",
+    "paragraph": "Construyo soluciones web escalables usando tecnologías modernas como React.js, Node.js y Python. Recién graduado en Desarrollo de Software con experiencia práctica en hackathons, proyectos colaborativos y soporte técnico freelance.",
+    "getInTouch": "Contactarme",
+    "viewProjects": "Ver Proyectos",
+    "professionalPhoto": "Foto Profesional"
+  },
+  "Services": {
+    "heading": "Servicio de creación de Landing Pages",
+    "description": "Transforma tus ideas en landing pages atractivas y enfocadas en conversión",
+    "exampleTitle": "Proyecto de ejemplo: Quincho El Milagro",
+    "exampleDescription": "Una landing moderna que muestra un servicio de alquiler de quinchos con un diseño elegante, animaciones suaves y layout responsive. Construido con Next.js e incluye galerías de imágenes, formularios de contacto y rendimiento optimizado.",
+    "viewOnGithub": "Ver en GitHub",
+    "getYourLandingPage": "Solicitar tu Landing Page",
+    "whatYouGetTitle": "Qué Obtendrás",
+    "whatYouGet": {
+      "responsive": "Diseño Responsive",
+      "fast": "Velocidad de Carga",
+      "seo": "Optimizado"
+    }
+  },
+  "Common": {
+    "percent100": "100%",
+    "fast": "Rápido",
+    "seo": "SEO"
+  }
+}
