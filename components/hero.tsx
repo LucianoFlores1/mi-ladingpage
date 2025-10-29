@@ -4,9 +4,34 @@ import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Mail, MapPin } from "lucide-react"
 import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
+import React from 'react'
 
 export function Hero() {
   const t = useTranslations("Hero")
+
+  // Generate particles only on the client after mount to avoid
+  // server/client HTML mismatch caused by Math.random() during SSR.
+  const [particles, setParticles] = React.useState<
+    | {
+      left: string
+      top: string
+      duration: number
+      delay: number
+      color: string
+    }[]
+    | null
+  >(null)
+
+  React.useEffect(() => {
+    const p = [...Array(8)].map((_, i) => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      duration: 3 + Math.random() * 2,
+      delay: Math.random() * 2,
+      color: i % 2 === 0 ? 'var(--neon-cyan)' : 'var(--neon-magenta)',
+    }))
+    setParticles(p)
+  }, [])
 
   return (
     <section className="min-h-screen flex items-center justify-center px-6 pt-20">
@@ -18,7 +43,7 @@ export function Hero() {
           className="space-y-8"
         >
           <div className="space-y-4">
-                <motion.h1
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -118,28 +143,30 @@ export function Hero() {
               />
             </div>
 
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 rounded-full"
-                style={{
-                  background: i % 2 === 0 ? "var(--neon-cyan)" : "var(--neon-magenta)",
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, -30, 0],
-                  opacity: [0.3, 1, 0.3],
-                  scale: [1, 1.5, 1],
-                }}
-                transition={{
-                  duration: 3 + Math.random() * 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  delay: Math.random() * 2,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
+            {particles
+              ? particles.map((p, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-2 h-2 rounded-full"
+                  style={{
+                    background: p.color,
+                    left: p.left,
+                    top: p.top,
+                  }}
+                  animate={{
+                    y: [0, -30, 0],
+                    opacity: [0.3, 1, 0.3],
+                    scale: [1, 1.5, 1],
+                  }}
+                  transition={{
+                    duration: p.duration,
+                    repeat: Number.POSITIVE_INFINITY,
+                    delay: p.delay,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))
+              : null}
 
             <motion.div
               className="absolute inset-0 rounded-lg pointer-events-none"

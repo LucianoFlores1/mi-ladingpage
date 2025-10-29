@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
-import { Suspense } from "react";
+import IntlClientProvider from "@/components/intl-client-provider";
 
 export const metadata: Metadata = {
   title: "Luciano Rafael Flores - Full Stack Developer",
@@ -28,16 +28,26 @@ export default async function LocaleLayout({
   // Carga dinámica de mensajes JSON desde la carpeta /locales
   const messages = (await import(`../../locales/${locale}.json`)).default;
 
-  // Import the provider dynamically to avoid type issues when the package is not installed
-  const nextIntl = await import("next-intl");
-  const NextIntlProvider = (nextIntl as any).NextIntlProvider || (nextIntl as any).IntlProvider || (nextIntl as any).default;
+  // Importar dinámicamente next-intl y resolver el provider disponible
+  let ServerIntlProvider: any = ({ children }: { children: React.ReactNode }) => children;
+  try {
+    const nextIntl = await import("next-intl");
+    ServerIntlProvider =
+      (nextIntl as any).IntlProvider ||
+      (nextIntl as any).NextIntlProvider ||
+      (nextIntl as any).NextIntlClientProvider ||
+      (nextIntl as any).default ||
+      ServerIntlProvider;
+  } catch (e) {
+    // si falla, mantenemos el passthrough provider y seguimos
+  }
 
   return (
     <html lang={locale} className="dark">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <Suspense fallback={null}>
-          <NextIntlProvider locale={locale} messages={messages}>{children}</NextIntlProvider>
-        </Suspense>
+        <ServerIntlProvider locale={locale} messages={messages}>
+          <IntlClientProvider locale={locale} messages={messages}>{children}</IntlClientProvider>
+        </ServerIntlProvider>
         <Analytics />
       </body>
     </html>

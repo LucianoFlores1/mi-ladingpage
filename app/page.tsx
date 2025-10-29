@@ -1,23 +1,8 @@
-import { Hero } from "@/components/hero"
-import { About } from "@/components/about"
-import { Experience } from "@/components/experience"
-import { Projects } from "@/components/projects"
-import { Services } from "@/components/services"
-import { Skills } from "@/components/skills"
-import { Contact } from "@/components/contact"
-import { Navigation } from "@/components/navigation"
+import { redirect } from 'next/navigation'
 
+// Redirect root to default locale. We use a server redirect so the
+// root page doesn't attempt to prerender client-only interactive
+// components and avoids build-time prerender errors.
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-background">
-      <Navigation />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Services />
-      <Skills />
-      <Contact />
-    </main>
-  )
+  redirect('/en')
 }
