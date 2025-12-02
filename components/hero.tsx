@@ -268,7 +268,6 @@ export function Hero() {
                   }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                 >
-                  {t("professionalPhoto")}
                 </motion.span>
               </motion.p>
             </div>

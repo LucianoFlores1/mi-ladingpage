@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import LocaleToggle from "./locale-toggle"
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -65,6 +66,7 @@ export function Navigation() {
                 {item.name}
               </Button>
             ))}
+            <LocaleToggle />
           </div>
         </div>
       </div>
