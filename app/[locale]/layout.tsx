@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import IntlClientProvider from "@/components/intl-client-provider";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export const metadata: Metadata = {
   title: "Luciano Rafael Flores - Full Stack Developer",
@@ -48,6 +49,7 @@ export default async function LocaleLayout({
         <ServerIntlProvider locale={locale} messages={messages}>
           <IntlClientProvider locale={locale} messages={messages}>{children}</IntlClientProvider>
         </ServerIntlProvider>
+        <WhatsAppButton />
         <Analytics />
       </body>
     </html>
