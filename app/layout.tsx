@@ -1,29 +1,11 @@
 import type React from "react"
-import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
-import { Analytics } from "@vercel/analytics/next"
-import { Suspense } from "react"
-import "./globals.css"
 
-export const metadata: Metadata = {
-  title: "Luciano Rafael Flores - Full Stack Developer",
-  description:
-    "Full Stack Developer from Salta, Argentina. Experienced in React.js, Node.js, Python, and modern web technologies.",
-  generator: "v0.app",
-}
-
+// Root layout mínimo requerido por Next.js App Router.
+// El layout real con estilos y providers está en app/[locale]/layout.tsx
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
-    <html lang="en" className="dark">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <Suspense fallback={null}>{children}</Suspense>
-        <Analytics />
-      </body>
-    </html>
-  )
+  return children
 }

@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import IntlClientProvider from "@/components/intl-client-provider";
 import { WhatsAppButton } from "@/components/whatsapp-button";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Luciano Rafael Flores - Full Stack Developer",
